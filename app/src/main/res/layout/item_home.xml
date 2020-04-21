@@ -1,44 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/defaultSpace"
+    android:background="@drawable/border_layout">
 
-    <Spinner
-        android:id="@+id/item_home_spinner"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.23000002" />
+    <TextView
+        android:id="@+id/title_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/mainContainer"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintBottom_toTopOf="@id/confirmed_container"
+        tools:text="Title"
+        android:textColor="@color/textCardColor"
+        android:textSize="@dimen/titleSize"
+        android:textFontWeight="bold"/>
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_home_spinner">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/confirmed_container"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/detailSpace"
+        app:layout_constraintTop_toBottomOf="@id/mainContainer"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintRight_toRightOf="@id/mainContainer"
+        app:layout_constraintBottom_toTopOf="@id/deaths_container">
+        <TextView
+            android:id="@+id/total_confirmed_text_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/totalConfirmed"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
 
         <TextView
-            android:id="@+id/item_home_textView"
-            android:layout_width="match_parent"
+            android:id="@+id/total_confirmed_value_card"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TextView" />
-    </ScrollView>
+            android:layout_weight="1"
+            tools:text="0"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/deaths_container"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/detailSpace"
+        app:layout_constraintTop_toBottomOf="@id/confirmed_container"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintRight_toRightOf="@id/mainContainer"
+        app:layout_constraintBottom_toTopOf="@id/recovered_container">
+        <TextView
+            android:id="@+id/total_deaths_text_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/totalDeaths"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+
+        <TextView
+            android:id="@+id/total_deaths_value_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="0"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recovered_container"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/detailSpace"
+        app:layout_constraintTop_toBottomOf="@id/deaths_container"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintRight_toRightOf="@id/mainContainer">
+        <TextView
+            android:id="@+id/total_recovered_text_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/totalRecovered"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+
+        <TextView
+            android:id="@+id/total_recovered_value_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="0"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/updated_container"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/detailSpace"
+        app:layout_constraintTop_toBottomOf="@id/recovered_container"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintRight_toRightOf="@id/mainContainer"
+        app:layout_constraintBottom_toBottomOf="@id/mainContainer">
+        <TextView
+            android:id="@+id/last_update_text_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lastUpdate"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+
+        <TextView
+            android:id="@+id/last_update_value_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="2020-04-20"
+            android:textColor="@color/textCardColor"
+            android:textSize="@dimen/detailSize"/>
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
