@@ -2,6 +2,6 @@
 <resources>
     <dimen name="defaultSpace">16dp</dimen>
     <dimen name="detailSpace">8dp</dimen>
-    <dimen name="titleSize">22sp</dimen>
-    <dimen name="detailSize">16sp</dimen>
+    <dimen name="titleSize">18sp</dimen>
+    <dimen name="detailSize">14sp</dimen>
 </resources>

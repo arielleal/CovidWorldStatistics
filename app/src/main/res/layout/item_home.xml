@@ -5,143 +5,147 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/defaultSpace"
-    android:background="@drawable/border_layout">
+    android:layout_marginTop="8dp"
+    android:background="@drawable/border_layout"
+    android:padding="@dimen/defaultSpace">
 
     <TextView
         android:id="@+id/title_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/mainContainer"
-        app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintEnd_toEndOf="@id/mainContainer"
-        app:layout_constraintBottom_toTopOf="@id/confirmed_container"
-        tools:text="Title"
         android:textColor="@color/textCardColor"
         android:textSize="@dimen/titleSize"
-        android:textFontWeight="bold"/>
+        app:layout_constraintBottom_toTopOf="@id/global_confirmed_container"
+        app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintTop_toTopOf="@id/mainContainer"
+        tools:text="Title" />
 
     <LinearLayout
+        android:id="@+id/global_confirmed_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/confirmed_container"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/detailSpace"
-        app:layout_constraintTop_toBottomOf="@id/mainContainer"
-        app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/global_deaths_container"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
-        app:layout_constraintBottom_toTopOf="@id/deaths_container">
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintTop_toBottomOf="@id/mainContainer">
+
         <TextView
-            android:id="@+id/total_confirmed_text_card"
+            android:id="@+id/global_total_confirmed_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/totalConfirmed"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/total_confirmed_value_card"
+            android:id="@+id/global_total_confirmed_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="0"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize"
+            tools:text="0" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/global_deaths_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/deaths_container"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/detailSpace"
-        app:layout_constraintTop_toBottomOf="@id/confirmed_container"
-        app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/global_recovered_container"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
-        app:layout_constraintBottom_toTopOf="@id/recovered_container">
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintTop_toBottomOf="@id/global_confirmed_container">
+
         <TextView
-            android:id="@+id/total_deaths_text_card"
+            android:id="@+id/global_total_deaths_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/totalDeaths"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/total_deaths_value_card"
+            android:id="@+id/global_total_deaths_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="0"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize"
+            tools:text="0" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/global_recovered_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recovered_container"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/detailSpace"
-        app:layout_constraintTop_toBottomOf="@id/deaths_container"
-        app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
-        app:layout_constraintRight_toRightOf="@id/mainContainer">
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        app:layout_constraintRight_toRightOf="@id/mainContainer"
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintTop_toBottomOf="@id/global_deaths_container">
+
         <TextView
-            android:id="@+id/total_recovered_text_card"
+            android:id="@+id/global_total_recovered_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/totalRecovered"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/total_recovered_value_card"
+            android:id="@+id/global_total_recovered_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="0"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize"
+            tools:text="0" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/global_updated_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/updated_container"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/detailSpace"
-        app:layout_constraintTop_toBottomOf="@id/recovered_container"
-        app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/mainContainer"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
+        app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
-        app:layout_constraintBottom_toBottomOf="@id/mainContainer">
+        app:layout_constraintStart_toStartOf="@id/mainContainer"
+        app:layout_constraintTop_toBottomOf="@id/global_recovered_container">
+
         <TextView
-            android:id="@+id/last_update_text_card"
+            android:id="@+id/global_last_update_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/lastUpdate"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/last_update_value_card"
+            android:id="@+id/global_last_update_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:text="2020-04-20"
             android:textColor="@color/textCardColor"
-            android:textSize="@dimen/detailSize"/>
+            android:textSize="@dimen/detailSize"
+            tools:text="2020-04-20" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

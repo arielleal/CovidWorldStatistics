@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_corona.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.NumberFormat
 
 class CoronaActivity : AppCompatActivity() {
 
@@ -37,7 +38,7 @@ class CoronaActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<CoronaModel>, response: Response<CoronaModel>) {
                 response.body()?.let { coronaModel ->
-                    txtTeste.text = coronaModel.countries.last().country
+                    fillGlobalStatistic(coronaModel)
 
                     coronaModel.countries.forEach { summary ->
                         if (!summary.country.isNullOrEmpty()) {
@@ -47,6 +48,14 @@ class CoronaActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun fillGlobalStatistic(coronaModel: CoronaModel) {
+        var numberFormat: NumberFormat = NumberFormat.getIntegerInstance()
+
+        global_total_confirmed_value_card.text = numberFormat.format(coronaModel.global.confirmed)
+        global_total_deaths_value_card.text = numberFormat.format(coronaModel.global.deaths)
+        global_total_recovered_value_card.text = numberFormat.format(coronaModel.global.recovered)
     }
 }
 

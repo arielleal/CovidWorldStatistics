@@ -6,11 +6,11 @@ data class SummaryModel (
     @SerializedName("Country")
     var country: String?,
     @SerializedName("TotalConfirmed")
-    var confirmed: String,
+    var confirmed: Long,
     @SerializedName("TotalDeaths")
-    var deaths: String,
+    var deaths: Long,
     @SerializedName("TotalRecovered")
-    var recovered: String,
+    var recovered: Long,
     @SerializedName("Date")
     var update: String?
 )
