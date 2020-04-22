@@ -14,14 +14,17 @@ import retrofit2.Response
 
 class CoronaActivity : AppCompatActivity() {
 
+    var listCountries: MutableList<String> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_corona)
-        title = "Covid World Statistics"
+        title = getString(R.string.toolbar_title)
+
         getData()
     }
 
-    fun getData() {
+    private fun getData() {
         val retrofitClient = RetrofitConfig.dataConfig()
 
         val endpoint = retrofitClient.create(GetDataService::class.java)
@@ -33,8 +36,14 @@ class CoronaActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<CoronaModel>, response: Response<CoronaModel>) {
-                response.body()?.let {
-                    txtTeste.text = it.countries.last().country
+                response.body()?.let { coronaModel ->
+                    txtTeste.text = coronaModel.countries.last().country
+
+                    coronaModel.countries.forEach { summary ->
+                        if (!summary.country.isNullOrEmpty()) {
+                            listCountries.add(summary.country!!)
+                        }
+                    }
                 }
             }
         })
