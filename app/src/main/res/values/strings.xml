@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CovidWorldStatistics</string>
 
+    <string name="toolbar_title">Covid-19 World Statistics</string>
     <string name="global">Global</string>
     <string name="totalConfirmed">Total confirmed</string>
     <string name="totalDeaths">Total deaths</string>
