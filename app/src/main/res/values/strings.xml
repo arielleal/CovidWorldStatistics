@@ -2,8 +2,8 @@
     <string name="app_name">CovidWorldStatistics</string>
 
     <string name="global">Global</string>
-    <string name="totalConfirmed">Total Confirmed</string>
+    <string name="totalConfirmed">Total confirmed</string>
     <string name="totalDeaths">Total deaths</string>
-    <string name="totalRecovered">Total Recovered</string>
+    <string name="totalRecovered">Total recovered</string>
     <string name="lastUpdate">Last update</string>
 </resources>
