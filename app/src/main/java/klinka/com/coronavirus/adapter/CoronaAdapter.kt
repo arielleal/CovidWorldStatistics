@@ -52,5 +52,4 @@ class CoronaAdapter (private var dataList: List<SummaryModel>, private val conte
         val lastUpdate = dateFormat.format(summaryModel.update)
         holder.update.text = lastUpdate
     }
-
 }

@@ -1,7 +1,10 @@
 package klinka.com.coronavirus.activity
 
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,6 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.NumberFormat
+
 
 class CoronaActivity : AppCompatActivity() {
 
@@ -40,9 +44,14 @@ class CoronaActivity : AppCompatActivity() {
     }
 
     private fun configureDropDown() {
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listCountries)
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
-        countries_spinner.adapter = adapter
+        countries_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
+
+            override fun onItemSelected(parent: AdapterView<*>, view: View?,
+                                        position: Int, id: Long) {
+                val item = parent.getItemAtPosition(position)
+            }
+        }
     }
 
     private fun configureAdapter() {
@@ -76,13 +85,24 @@ class CoronaActivity : AppCompatActivity() {
 
         recycleAdapter.refreshDataList(coronaModel.countries)
 
+        loadCountryListName(coronaModel)
+
+        swipeRefresh_layout.isRefreshing = false
+    }
+
+    private fun loadCountryListName(coronaModel: CoronaModel) {
+        listCountries.clear()
+        listCountries.add(getString(R.string.all))
+
         coronaModel.countries.forEach { summary ->
             if (!summary.country.isNullOrEmpty()) {
                 listCountries.add(summary.country!!)
             }
         }
 
-        swipeRefresh_layout.isRefreshing = false
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listCountries)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        countries_spinner.adapter = adapter
     }
 
     private fun fillGlobalStatistic(coronaModel: CoronaModel) {
