@@ -20,7 +20,6 @@ class CoronaAdapter (private var dataList: List<SummaryModel>, private val conte
 
     class SummaryViewHolder(itemLayoutView: View):RecyclerView.ViewHolder(itemLayoutView) {
         val titleCard: TextView = itemLayoutView.findViewById(R.id.title_card)
-        val
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SummaryViewHolder {

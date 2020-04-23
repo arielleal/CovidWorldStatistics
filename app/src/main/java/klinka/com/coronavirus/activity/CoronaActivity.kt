@@ -19,31 +19,37 @@ import java.text.NumberFormat
 
 class CoronaActivity : AppCompatActivity() {
 
-    var listCountries: MutableList<String> = ArrayList()
+    private var listCountries: MutableList<String> = ArrayList()
 
-    lateinit var recyclerView: RecyclerView
-    lateinit var recycleAdapter: CoronaAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recycleAdapter: CoronaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_corona)
         title = getString(R.string.toolbar_title)
 
-        recyclerView = findViewById(R.id.recycler_view_countries)
-        recycleAdapter = CoronaAdapter(emptyList(), this)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = recycleAdapter
-
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item,listCountries)
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
-        countries_spinner.adapter = adapter
+        configureAdapter()
+        configureDropDown()
 
         loadData()
 
         swipeRefresh_layout.setOnRefreshListener {
             loadData()
         }
+    }
+
+    private fun configureDropDown() {
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listCountries)
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+        countries_spinner.adapter = adapter
+    }
+
+    private fun configureAdapter() {
+        recyclerView = findViewById(R.id.recycler_view_countries)
+        recycleAdapter = CoronaAdapter(emptyList(), this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = recycleAdapter
     }
 
     private fun loadData() {
