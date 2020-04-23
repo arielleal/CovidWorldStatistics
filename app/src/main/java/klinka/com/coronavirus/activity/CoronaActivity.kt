@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import klinka.com.coronavirus.R
 import klinka.com.coronavirus.adapter.CoronaAdapter
 import klinka.com.coronavirus.model.CoronaModel
+import klinka.com.coronavirus.model.SummaryModel
 import klinka.com.coronavirus.service.GetDataService
 import klinka.com.coronavirus.service.RetrofitConfig
 import kotlinx.android.synthetic.main.activity_corona.*
@@ -24,6 +24,7 @@ import java.text.NumberFormat
 class CoronaActivity : AppCompatActivity() {
 
     private var listCountries: MutableList<String> = ArrayList()
+    private var listSummary: MutableList<SummaryModel> = ArrayList()
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var recycleAdapter: CoronaAdapter
@@ -49,7 +50,13 @@ class CoronaActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>, view: View?,
                                         position: Int, id: Long) {
-                val item = parent.getItemAtPosition(position)
+
+                if(position == 0){
+                    recycleAdapter.refreshDataList(listSummary)
+                }else{
+                    val item = parent.getItemAtPosition(position)
+                    recycleAdapter.refreshDataList(listSummary.filter { summaryModel -> summaryModel.country == item })
+                }
             }
         }
     }
@@ -83,7 +90,11 @@ class CoronaActivity : AppCompatActivity() {
     private fun onLoadDataComplete(coronaModel: CoronaModel) {
         fillGlobalStatistic(coronaModel)
 
-        recycleAdapter.refreshDataList(coronaModel.countries)
+        listSummary.clear()
+
+        listSummary.addAll(coronaModel.countries)
+
+        recycleAdapter.refreshDataList(listSummary)
 
         loadCountryListName(coronaModel)
 
