@@ -7,4 +7,6 @@
     <string name="totalDeaths">Total deaths</string>
     <string name="totalRecovered">Total recovered</string>
     <string name="lastUpdate">Last update</string>
+
+    <string name="all">All countries</string>
 </resources>

@@ -34,5 +34,4 @@ class CoronaAdapter (private var dataList: List<SummaryModel>, private val conte
         val summaryModel = dataList[position]
         holder.titleCard.text = summaryModel.country
     }
-
 }
