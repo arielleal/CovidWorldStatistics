@@ -15,10 +15,12 @@ class CoronaAdapter (private var dataList: List<SummaryModel>, private val conte
 
     fun refreshDataList(list: List<SummaryModel>){
         dataList = list
+        this.notifyDataSetChanged()
     }
 
     class SummaryViewHolder(itemLayoutView: View):RecyclerView.ViewHolder(itemLayoutView) {
         val titleCard: TextView = itemLayoutView.findViewById(R.id.title_card)
+        val
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SummaryViewHolder {
