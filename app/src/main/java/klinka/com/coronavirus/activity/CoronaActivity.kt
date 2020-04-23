@@ -39,10 +39,14 @@ class CoronaActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         countries_spinner.adapter = adapter
 
-        getData()
+        loadData()
+
+        swipeRefresh_layout.setOnRefreshListener {
+            loadData()
+        }
     }
 
-    private fun getData() {
+    private fun loadData() {
         val retrofitClient = RetrofitConfig.dataConfig()
 
         val endpoint = retrofitClient.create(GetDataService::class.java)
@@ -55,19 +59,24 @@ class CoronaActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<CoronaModel>, response: Response<CoronaModel>) {
                 response.body()?.let { coronaModel ->
-                    fillGlobalStatistic(coronaModel)
-
-                    recycleAdapter.refreshDataList(coronaModel.countries)
-
-
-                    coronaModel.countries.forEach { summary ->
-                        if (!summary.country.isNullOrEmpty()) {
-                            listCountries.add(summary.country!!)
-                        }
-                    }
+                    onLoadDataComplete(coronaModel)
                 }
             }
         })
+    }
+
+    private fun onLoadDataComplete(coronaModel: CoronaModel) {
+        fillGlobalStatistic(coronaModel)
+
+        recycleAdapter.refreshDataList(coronaModel.countries)
+
+        coronaModel.countries.forEach { summary ->
+            if (!summary.country.isNullOrEmpty()) {
+                listCountries.add(summary.country!!)
+            }
+        }
+
+        swipeRefresh_layout.isRefreshing = false
     }
 
     private fun fillGlobalStatistic(coronaModel: CoronaModel) {
