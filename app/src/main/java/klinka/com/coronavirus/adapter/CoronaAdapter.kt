@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import klinka.com.coronavirus.R
 import klinka.com.coronavirus.model.SummaryModel
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -41,13 +42,15 @@ class CoronaAdapter (private var dataList: List<SummaryModel>, private val conte
 
     override fun onBindViewHolder(holder: SummaryViewHolder, position: Int) {
         val summaryModel = dataList[position]
+
+        val numberFormat: NumberFormat = NumberFormat.getIntegerInstance()
         val newFormat = "yyyy-MM-dd"
         val dateFormat = SimpleDateFormat(newFormat, Locale.US)
 
         holder.titleCard.text = summaryModel.country
-        holder.confirmed.text = summaryModel.confirmed.toString()
-        holder.deaths.text = summaryModel.deaths.toString()
-        holder.recovered.text = summaryModel.recovered.toString()
+        holder.confirmed.text = numberFormat.format(summaryModel.confirmed)
+        holder.deaths.text = numberFormat.format(summaryModel.deaths)
+        holder.recovered.text = numberFormat.format(summaryModel.recovered)
 
         val lastUpdate = dateFormat.format(summaryModel.update)
         holder.update.text = lastUpdate
