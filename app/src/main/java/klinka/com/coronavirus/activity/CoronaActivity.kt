@@ -22,10 +22,14 @@ class CoronaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_corona)
         title = getString(R.string.toolbar_title)
 
-        getData()
+        loadData()
+
+        swipeRefresh_layout.setOnRefreshListener {
+            loadData()
+        }
     }
 
-    private fun getData() {
+    private fun loadData() {
         val retrofitClient = RetrofitConfig.dataConfig()
 
         val endpoint = retrofitClient.create(GetDataService::class.java)
@@ -38,16 +42,22 @@ class CoronaActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<CoronaModel>, response: Response<CoronaModel>) {
                 response.body()?.let { coronaModel ->
-                    fillGlobalStatistic(coronaModel)
-
-                    coronaModel.countries.forEach { summary ->
-                        if (!summary.country.isNullOrEmpty()) {
-                            listCountries.add(summary.country!!)
-                        }
-                    }
+                    onLoadDataComplete(coronaModel)
                 }
             }
         })
+    }
+
+    private fun onLoadDataComplete(coronaModel: CoronaModel) {
+        fillGlobalStatistic(coronaModel)
+
+        coronaModel.countries.forEach { summary ->
+            if (!summary.country.isNullOrEmpty()) {
+                listCountries.add(summary.country!!)
+            }
+        }
+
+        swipeRefresh_layout.isRefreshing = false
     }
 
     private fun fillGlobalStatistic(coronaModel: CoronaModel) {

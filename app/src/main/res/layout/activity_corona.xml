@@ -1,153 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainContainer"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/defaultSpace"
-        android:padding="@dimen/detailSize"
-        android:background="@drawable/border_layout"
-        app:layout_constraintEnd_toEndOf="@id/main"
-        app:layout_constraintStart_toStartOf="@id/main"
-        app:layout_constraintTop_toTopOf="@id/main">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/global_text_view"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/global"
-            android:textColor="@color/textCardColor"
-            android:textSize="@dimen/titleSize"
-            app:layout_constraintBottom_toTopOf="@id/global_confirmed_container"
-            app:layout_constraintEnd_toEndOf="@id/mainContainer"
-            app:layout_constraintStart_toStartOf="@id/mainContainer"
-            app:layout_constraintTop_toTopOf="@id/mainContainer" />
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/global_confirmed_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/detailSpace"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/global_deaths_container"
-            app:layout_constraintEnd_toEndOf="@id/mainContainer"
-            app:layout_constraintLeft_toLeftOf="@id/mainContainer"
-            app:layout_constraintRight_toRightOf="@id/mainContainer"
-            app:layout_constraintStart_toStartOf="@id/mainContainer"
-            app:layout_constraintTop_toBottomOf="@id/global_text_view">
-
-            <TextView
-                android:id="@+id/global_total_confirmed_text_card"
-                android:layout_width="0dp"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/totalConfirmed"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize" />
+                android:layout_margin="@dimen/defaultSpace"
+                android:padding="@dimen/detailSize"
+                android:background="@drawable/border_layout"
+                app:layout_constraintEnd_toEndOf="@id/main"
+                app:layout_constraintStart_toStartOf="@id/main"
+                app:layout_constraintTop_toTopOf="@id/main">
 
-            <TextView
-                android:id="@+id/global_total_confirmed_value_card"
+                <TextView
+                    android:id="@+id/global_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/global"
+                    android:textColor="@color/textCardColor"
+                    android:textSize="@dimen/titleSize"
+                    app:layout_constraintBottom_toTopOf="@id/global_confirmed_container"
+                    app:layout_constraintEnd_toEndOf="@id/mainContainer"
+                    app:layout_constraintStart_toStartOf="@id/mainContainer"
+                    app:layout_constraintTop_toTopOf="@id/mainContainer" />
+
+                <LinearLayout
+                    android:id="@+id/global_confirmed_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/detailSpace"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/global_deaths_container"
+                    app:layout_constraintEnd_toEndOf="@id/mainContainer"
+                    app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+                    app:layout_constraintRight_toRightOf="@id/mainContainer"
+                    app:layout_constraintStart_toStartOf="@id/mainContainer"
+                    app:layout_constraintTop_toBottomOf="@id/global_text_view">
+
+                    <TextView
+                        android:id="@+id/global_total_confirmed_text_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/totalConfirmed"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize" />
+
+                    <TextView
+                        android:id="@+id/global_total_confirmed_value_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize"
+                        tools:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/global_deaths_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/detailSpace"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/global_recovered_container"
+                    app:layout_constraintEnd_toEndOf="@id/mainContainer"
+                    app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+                    app:layout_constraintRight_toRightOf="@id/mainContainer"
+                    app:layout_constraintStart_toStartOf="@id/mainContainer"
+                    app:layout_constraintTop_toBottomOf="@id/global_confirmed_container">
+
+                    <TextView
+                        android:id="@+id/global_total_deaths_text_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/totalDeaths"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize" />
+
+                    <TextView
+                        android:id="@+id/global_total_deaths_value_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize"
+                        tools:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/global_recovered_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/detailSpace"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@id/mainContainer"
+                    app:layout_constraintLeft_toLeftOf="@id/mainContainer"
+                    app:layout_constraintRight_toRightOf="@id/mainContainer"
+                    app:layout_constraintStart_toStartOf="@id/mainContainer"
+                    app:layout_constraintTop_toBottomOf="@id/global_deaths_container">
+
+                    <TextView
+                        android:id="@+id/global_total_recovered_text_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/totalRecovered"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize" />
+
+                    <TextView
+                        android:id="@+id/global_total_recovered_value_card"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/textCardColor"
+                        android:textSize="@dimen/detailSize"
+                        tools:text="0" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_countries"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize"
-                tools:text="0" />
-        </LinearLayout>
+                android:layout_height="300dp"
+                android:layout_margin="@dimen/defaultSpace"
+                app:layout_constraintBottom_toBottomOf="@id/main"
+                app:layout_constraintEnd_toEndOf="@id/main"
+                app:layout_constraintStart_toStartOf="@id/main"
+                app:layout_constraintTop_toBottomOf="@+id/spinner"
+                tools:listitem="@layout/item_home" />
 
-        <LinearLayout
-            android:id="@+id/global_deaths_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/detailSpace"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/global_recovered_container"
-            app:layout_constraintEnd_toEndOf="@id/mainContainer"
-            app:layout_constraintLeft_toLeftOf="@id/mainContainer"
-            app:layout_constraintRight_toRightOf="@id/mainContainer"
-            app:layout_constraintStart_toStartOf="@id/mainContainer"
-            app:layout_constraintTop_toBottomOf="@id/global_confirmed_container">
-
-            <TextView
-                android:id="@+id/global_total_deaths_text_card"
+            <Spinner
+                android:id="@+id/spinner"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/totalDeaths"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize" />
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainContainer"/>
 
-            <TextView
-                android:id="@+id/global_total_deaths_value_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize"
-                tools:text="0" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/global_recovered_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/detailSpace"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@id/mainContainer"
-            app:layout_constraintLeft_toLeftOf="@id/mainContainer"
-            app:layout_constraintRight_toRightOf="@id/mainContainer"
-            app:layout_constraintStart_toStartOf="@id/mainContainer"
-            app:layout_constraintTop_toBottomOf="@id/global_deaths_container">
-
-            <TextView
-                android:id="@+id/global_total_recovered_text_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/totalRecovered"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize" />
-
-            <TextView
-                android:id="@+id/global_total_recovered_value_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/textCardColor"
-                android:textSize="@dimen/detailSize"
-                tools:text="0" />
-        </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_countries"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_margin="@dimen/defaultSpace"
-        app:layout_constraintBottom_toBottomOf="@id/main"
-        app:layout_constraintEnd_toEndOf="@id/main"
-        app:layout_constraintStart_toStartOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        tools:listitem="@layout/item_home" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainContainer"/>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
