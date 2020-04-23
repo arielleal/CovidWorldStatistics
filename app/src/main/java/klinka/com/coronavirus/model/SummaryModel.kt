@@ -1,6 +1,7 @@
 package klinka.com.coronavirus.model
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class SummaryModel (
     @SerializedName("Country")
@@ -12,5 +13,5 @@ data class SummaryModel (
     @SerializedName("TotalRecovered")
     var recovered: Long,
     @SerializedName("Date")
-    var update: String?
+    var update: Date?
 )

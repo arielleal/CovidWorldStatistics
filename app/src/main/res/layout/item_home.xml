@@ -15,19 +15,19 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textCardColor"
         android:textSize="@dimen/titleSize"
-        app:layout_constraintBottom_toTopOf="@id/global_confirmed_container"
+        app:layout_constraintBottom_toTopOf="@id/confirmed_container"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
         app:layout_constraintStart_toStartOf="@id/mainContainer"
         app:layout_constraintTop_toTopOf="@id/mainContainer"
         tools:text="Title" />
 
     <LinearLayout
-        android:id="@+id/global_confirmed_container"
+        android:id="@+id/confirmed_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detailSpace"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/global_deaths_container"
+        app:layout_constraintBottom_toTopOf="@id/deaths_container"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
         app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_card">
 
         <TextView
-            android:id="@+id/global_total_confirmed_text_card"
+            android:id="@+id/total_confirmed_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,7 +44,7 @@
             android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/global_total_confirmed_value_card"
+            android:id="@+id/total_confirmed_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,20 +54,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/global_deaths_container"
+        android:id="@+id/deaths_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detailSpace"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/global_recovered_container"
+        app:layout_constraintBottom_toTopOf="@id/recovered_container"
         app:layout_constraintEnd_toEndOf="@id/mainContainer"
         app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
         app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintTop_toBottomOf="@id/global_confirmed_container">
+        app:layout_constraintTop_toBottomOf="@id/confirmed_container">
 
         <TextView
-            android:id="@+id/global_total_deaths_text_card"
+            android:id="@+id/total_deaths_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,7 +76,7 @@
             android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/global_total_deaths_value_card"
+            android:id="@+id/total_deaths_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -86,7 +86,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/global_recovered_container"
+        android:id="@+id/recovered_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detailSpace"
@@ -95,10 +95,10 @@
         app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
         app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintTop_toBottomOf="@id/global_deaths_container">
+        app:layout_constraintTop_toBottomOf="@id/deaths_container">
 
         <TextView
-            android:id="@+id/global_total_recovered_text_card"
+            android:id="@+id/total_recovered_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -107,7 +107,7 @@
             android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/global_total_recovered_value_card"
+            android:id="@+id/total_recovered_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,7 +117,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/global_updated_container"
+        android:id="@+id/updated_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detailSpace"
@@ -127,10 +127,10 @@
         app:layout_constraintLeft_toLeftOf="@id/mainContainer"
         app:layout_constraintRight_toRightOf="@id/mainContainer"
         app:layout_constraintStart_toStartOf="@id/mainContainer"
-        app:layout_constraintTop_toBottomOf="@id/global_recovered_container">
+        app:layout_constraintTop_toBottomOf="@id/recovered_container">
 
         <TextView
-            android:id="@+id/global_last_update_text_card"
+            android:id="@+id/last_update_text_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -139,7 +139,7 @@
             android:textSize="@dimen/detailSize" />
 
         <TextView
-            android:id="@+id/global_last_update_value_card"
+            android:id="@+id/last_update_value_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
