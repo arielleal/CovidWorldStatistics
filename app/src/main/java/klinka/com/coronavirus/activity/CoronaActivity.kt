@@ -1,9 +1,13 @@
 package klinka.com.coronavirus.activity
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import klinka.com.coronavirus.R
+import klinka.com.coronavirus.adapter.CoronaAdapter
 import klinka.com.coronavirus.model.CoronaModel
 import klinka.com.coronavirus.service.GetDataService
 import klinka.com.coronavirus.service.RetrofitConfig
@@ -17,10 +21,23 @@ class CoronaActivity : AppCompatActivity() {
 
     var listCountries: MutableList<String> = ArrayList()
 
+    lateinit var recyclerView: RecyclerView
+    lateinit var recycleAdapter: CoronaAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_corona)
         title = getString(R.string.toolbar_title)
+
+        recyclerView = findViewById(R.id.recycler_view_countries)
+        recycleAdapter = CoronaAdapter(emptyList(), this)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = recycleAdapter
+
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item,listCountries)
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+        countries_spinner.adapter = adapter
 
         getData()
     }
@@ -40,6 +57,9 @@ class CoronaActivity : AppCompatActivity() {
                 response.body()?.let { coronaModel ->
                     fillGlobalStatistic(coronaModel)
 
+                    recycleAdapter.refreshDataList(coronaModel.countries)
+
+
                     coronaModel.countries.forEach { summary ->
                         if (!summary.country.isNullOrEmpty()) {
                             listCountries.add(summary.country!!)
@@ -51,7 +71,7 @@ class CoronaActivity : AppCompatActivity() {
     }
 
     private fun fillGlobalStatistic(coronaModel: CoronaModel) {
-        var numberFormat: NumberFormat = NumberFormat.getIntegerInstance()
+        val numberFormat: NumberFormat = NumberFormat.getIntegerInstance()
 
         global_total_confirmed_value_card.text = numberFormat.format(coronaModel.global.confirmed)
         global_total_deaths_value_card.text = numberFormat.format(coronaModel.global.deaths)

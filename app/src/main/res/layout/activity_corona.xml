@@ -126,19 +126,8 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_countries"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_margin="@dimen/defaultSpace"
-        app:layout_constraintBottom_toBottomOf="@id/main"
-        app:layout_constraintEnd_toEndOf="@id/main"
-        app:layout_constraintStart_toStartOf="@id/main"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        tools:listitem="@layout/item_home" />
-
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/countries_spinner"
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -149,5 +138,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mainContainer"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_countries"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_margin="@dimen/defaultSpace"
+        app:layout_constraintBottom_toBottomOf="@id/main"
+        app:layout_constraintEnd_toEndOf="@id/main"
+        app:layout_constraintStart_toStartOf="@id/main"
+        app:layout_constraintTop_toBottomOf="@+id/countries_spinner"
+        tools:listitem="@layout/item_home" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
