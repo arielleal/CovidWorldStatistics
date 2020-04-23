@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Covid World Statistics</string>
+    <string name="app_name">Covid-19 World Statistics</string>
 
     <string name="toolbar_title">Covid-19 World Statistics</string>
     <string name="global">Global</string>
